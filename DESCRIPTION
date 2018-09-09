@@ -1,9 +1,16 @@
 Package: bc
-Title: What the Package Does (one line, title case)
+Title: My personal R package with functions I plan to use often.
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Bryce", "Chamberlain", email = "bryce@superchordate.com", role = c("aut", "cre"))
+URL: https://github.com/superchordate/bc
+BugReports: https://github.com/superchordate/bc/issues
+Description: A collections of functions that I plan to use often.
 Depends: R (>= 3.3.3)
-License: What license is it under?
+License: GNU General Public License
 Encoding: UTF-8
 LazyData: true
+Imports:
+    dplyr,
+    data.tables,
+    httr,
+    jsonlite
