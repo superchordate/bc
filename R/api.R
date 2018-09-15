@@ -95,6 +95,14 @@ tryApi = function( url, verbose ){
 
   if( !exists('idt' ) ){
     stop( 'bc::api - Response could not be parsed. Response was: \n', dplyr::str_trunc( raw.response, width = 500 ) )
-  } else { return( idt ) }
+  }
+  
+  # Check common errors.
+  if( !is.null( idt[['error']] ) ){
+    if( !is.null( idt[['error']][['message']] ) ) stop( 'API Error message: ', idt[['error']][['message']]  )
+    stop( 'API error: \n', idt[['error']] )
+  }
+  
+  return( idt )
 
 }

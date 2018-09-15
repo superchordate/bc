@@ -14,3 +14,4 @@ Imports:
     data.table,
     httr,
     jsonlite
+RoxygenNote: 6.0.1
