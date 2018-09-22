@@ -9,7 +9,9 @@ clean(x, header.in.data = TRUE, header.on.row = NULL)
 \arguments{
 \item{x}{Data frame to clean.}
 
-\item{header.on.row}{}
+\item{header.in.data}{Column names are in the data and must be extracted from it.}
+
+\item{header.on.row}{Column names are on this row.}
 }
 \value{
 Clean tibble.

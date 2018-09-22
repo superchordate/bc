@@ -1,6 +1,7 @@
 Package: bc
 Title: My personal R package with functions I plan to use often.
-Version: 0.0.0.9000
+Version: 0.0.1.1000
+Date: 2019-09-22
 Authors@R: person("Bryce", "Chamberlain", email = "bryce@superchordate.com", role = c("aut", "cre"))
 URL: https://github.com/superchordate/bc
 BugReports: https://github.com/superchordate/bc/issues
@@ -15,3 +16,4 @@ Imports:
     httr,
     jsonlite
 RoxygenNote: 6.0.1
+Suggests: testthat

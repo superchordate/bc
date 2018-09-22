@@ -1,7 +1,7 @@
 r = function( 
   file, type = NULL,
   sheet = 1,
-  nastrings = nastrings,
+  na.strings = na.strings,
   skip.rows = 0
 ){
   

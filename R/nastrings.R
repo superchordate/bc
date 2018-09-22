@@ -4,10 +4,10 @@
 #'
 #' @docType data
 #'
-#' @usage nastrings
+#' @usage na.strings
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' # TODO
-"nastrings"
+"na.strings"
