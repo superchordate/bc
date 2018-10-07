@@ -17,4 +17,4 @@ Each of these is a work in progress. Pull requests are welcome.
 * **tonum** Convert a vector to numeric in a flexible, intelligent way.
 * **vsel** Select best variables to be used in a linear regression model based on my defined criteria. Best called after normalization and splitting categorical to boolean.
 
-*Many of these functions share names and functionality with functions I have built for Oliver Wyman. This is because these are useful names and commonly-used functions, not because I have copied them from my work there. As you can see in the commit history, each of these functions has been rebuilt on my personal time and with my personal computer.*
+*Many of these functions share names and functionality with functions I have built for Oliver Wyman. This is because these are useful names and commonly-used operations, not because I have copied them from my work there. As you can see in the commit history, each of these functions has been built from scratch on my personal time and with my personal computer.*
