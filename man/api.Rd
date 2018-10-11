@@ -4,8 +4,9 @@
 \alias{api}
 \title{Get data from API.}
 \usage{
-api(url, path = NULL, parms = NULL, do.cache = TRUE, cache.path = NULL,
-  cache.name = "api-cache", use.cache.same.day = TRUE, verbose = TRUE)
+api(url, path = NULL, parms = NULL, do.cache = TRUE,
+  cache.path = NULL, cache.name = "api-cache",
+  use.cache.same.day = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{url}{The URL of the API. You can set this up hou you like but it usually starts with htt and ends with .com or similar.}

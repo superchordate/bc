@@ -18,7 +18,7 @@ sch = function( x, search.for, search.col = NULL, do.regex = FALSE, ignore.case 
   if( ignore.case && is.character( search.for ) ) search.for = tolower( search.for )
   
   # Handle vector.
-  if( is.null( length(x) ) ){
+  if( is.null( ncol(x) ) ){
     
     # Manually handle ignore case since it won't work with fixed = TRUE>
     if( ignore.case && is.character(x) ) x = tolower(x)
@@ -40,7 +40,9 @@ sch = function( x, search.for, search.col = NULL, do.regex = FALSE, ignore.case 
     
     # Find matching rows.
     found.rows = c()
-    for( icol in x ) found.rows = which( grepl( search.for, icol, fixed = !do.regex ) )
+    for( icol in colnames(x) ){
+      found.rows = c( found.rows, which( grepl( search.for, x[[icol]], fixed = !do.regex ) ) )
+    }
   
     return( x[ unique( found.rows ), ] )
   

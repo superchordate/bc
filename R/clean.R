@@ -13,7 +13,7 @@
 #' #TODO
 clean = function( x, header.in.data = TRUE, header.on.row = NULL ){
 
-  x = as_tibble(x)
+  x = dplyr::as_tibble(x)
   
   if( header.in.data && is.null( header.on.row ) ) header.on.row = 1 
   

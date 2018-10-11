@@ -4,7 +4,8 @@
 \alias{cat2bool}
 \title{Convert Categorical Variables to Booleans.}
 \usage{
-cat2bool(x, match.to = NULL, make.names = TRUE, ignore.cols = c())
+cat2bool(x, match.to = NULL, make.names = TRUE, ignore.cols = c(),
+  other.name = "Other")
 }
 \arguments{
 \item{x}{Dataframe or tibble.}

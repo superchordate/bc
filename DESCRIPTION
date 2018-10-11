@@ -1,7 +1,7 @@
 Package: bc
 Title: My personal R package with functions I plan to use often.
-Version: 0.0.1.1000
-Date: 2019-09-22
+Version: 1.0.1.1000
+Date: 2018-10-10
 Authors@R: person("Bryce", "Chamberlain", email = "bryce@superchordate.com", role = c("aut", "cre"))
 URL: https://github.com/superchordate/bc
 BugReports: https://github.com/superchordate/bc/issues
@@ -12,8 +12,11 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
+    magrittr,
+    plyr,
+    purrr,
     data.table,
     httr,
     jsonlite
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Suggests: testthat

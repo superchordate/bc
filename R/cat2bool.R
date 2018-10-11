@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' cat2bool( iris )
-cat2bool = function( x, match.to = NULL, make.names = TRUE, ignore.cols = c() ){
+cat2bool = function( x, match.to = NULL, make.names = TRUE, ignore.cols = c(), other.name = 'Other' ){
   
   for( icol in setdiff( colnames(x), ignore.cols ) ) if( is.character( x[[icol]] ) || is.factor( x[[icol]] ) ){
     
@@ -23,7 +23,15 @@ cat2bool = function( x, match.to = NULL, make.names = TRUE, ignore.cols = c() ){
     # The least occured should be the 'other' that doesn't get its own columns.
     ivals = table( x[[icol]] ) %>% sort( decreasing = TRUE )
     
-    for( ival in names( ivals )[ -length(ivals) ] ) x[[ cc( icol, '=', ival ) ]] = x[[icol]] == ival
+    # Pick the 'Other' column that won't show up as a columns, and remove it from vals.
+    # If it isn't there, remove the last (smallest) group.
+    if( other.name %in% names(ivals) ){
+      ivals = ivals[ names( ivals ) != other.name ]
+    } else {
+      ivals = ivals[ -length(ivals ) ]
+    }
+    
+    for( ival in names( ivals ) ) x[[ cc( icol, '=', ival ) ]] = x[[icol]] == ival
     
     x = x[ , setdiff( colnames(x), icol ) ]
     
