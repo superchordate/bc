@@ -6,6 +6,8 @@
 #' @param folder Folder to look for path in, if applicable.
 #' @param sheet If an excel file, the sheet to load.
 #' @param do.time Allow processing to time values.
+#' @param min.acceptable.date Set to NULL to ignore. Sometimes numbers are assumed to be excel-formatted. One way to prevent this is to set min/max acceptable dates to help the conversion know if something is a meaningful data or not.
+#' @param max.acceptable.date Set to NULL to ignore. Sometimes numbers are assumed to be excel-formatted. One way to prevent this is to set min/max acceptable dates to help the conversion know if something is a meaningful data or not.
 #'
 #' @return Tibble.
 #' 
@@ -17,7 +19,9 @@ read.any = function(
   path,
   folder = NULL,
   sheet = 1,
-  do.time = FALSE
+  do.time = FALSE,
+  min.acceptable.date = '1-1-1900', 
+  max.acceptable.date = '12-31-2100'
   #na.strings = bc::na.strings,
   #skip.rows = 0
 ){
@@ -70,9 +74,11 @@ read.any = function(
   
   for( i in 1:ncol(idt) ) if( is.character( idt[[i]] ) || is.numeric( idt[[i]] ) ){
     
-    idt[[i]] = todate( idt[[i]], verbose = FALSE, do.time = do.time )
+    idt[[i]] = todate( idt[[i]], verbose = FALSE, do.time = do.time, min.acceptable.date = min.acceptable.date, max.acceptable.date = max.acceptable.date )
     
     if( is.character( idt[[i]] ) ) idt[[i]] = tonum( idt[[i]], verbose = FALSE )
+    
+    if( is.character( idt[[i]] ) ) idt[[i]] = factor( idt[[i]] )
     
   }
   

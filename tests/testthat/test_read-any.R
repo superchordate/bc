@@ -22,7 +22,7 @@ test_that( "works as expected", {
     
     expect_equal(
       idt$`Character Column`,
-      c( "Row 1", "Row 2", "Row 3", "Row 4" )
+      factor( c( "Row 1", "Row 2", "Row 3", "Row 4" ) )
     )
     
     expect_equal(
