@@ -1,8 +1,6 @@
 # bc
 
-My personal R package. Includes functions below. Use ?function to get more detailed documentation.
-
-Each of these is a work in progress. Pull requests are welcome.
+My R package. Includes functions below. Use ?function to get more detailed documentation.
 
 * **api** Get data from APIs.
 * **cat2bool** Convert categorical columns in a dataset to boolean indicators, useful in modeling.
@@ -18,5 +16,7 @@ Each of these is a work in progress. Pull requests are welcome.
 * **todate** Convert a vector to date. Choose what to do with new NAs. Returns non-date vectors unchanged.
 * **tonum** Convert a vector to number. Similar to todate.
 * **vsel** Select best variables to be used in a linear regression model based on my defined criteria. Best called after normalization and splitting categorical to boolean.
+
+*Each of these is a work in progress. Pull requests are welcome.*
 
 *Many of these functions share names and functionality with functions I have built for Oliver Wyman. This is because these are useful names and commonly-used operations, not because I have copied them from my work there. As you can see in the commit history, each of these functions has been built from scratch on my personal time and with my personal computer.*

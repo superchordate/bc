@@ -15,6 +15,7 @@
 #'
 #' @examples
 #' tonum( c( '1st', '2nd', '3rd' ) )
+#' tonum( c( '1.05', '30%', '-30%', '-45' ) )
 tonum = function( 
   x, 
   already.clean.vector = FALSE,
@@ -44,11 +45,17 @@ tonum = function(
     clean.x = gsub( '--', '+', clean.x )
     clean.x = gsub( '+([0-9])', '\\1', clean.x )
     
-  if( do.remove.chars ) clean.x = gsub( '[^0-9+.-]', '', clean.x )
+  if( do.remove.chars ) clean.x = gsub( '[^0-9+.%-]', '', clean.x )
+    
+  # Find percents.
+  
+    pcts = which( grepl( '%$', clean.x ) )
+    clean.x = gsub( '[%]', '', clean.x )
   
   # Attempt conversion.
     
     attempt = suppressWarnings({ as.numeric( clean.x ) })
+    attempt[ pcts ] = attempt[ pcts ] / 100
     
   # If no new NAs, return immediately.
     

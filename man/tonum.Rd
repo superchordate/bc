@@ -32,4 +32,5 @@ My flexible number conversion function.
 }
 \examples{
 tonum( c( '1st', '2nd', '3rd' ) )
+tonum( c( '1.05', '30\%', '-30\%', '-45' ) )
 }

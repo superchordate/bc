@@ -14,8 +14,11 @@
 #' @export
 #'
 #' @examples
+#' 
 #' todate( c( '12/3/14', 'Hello'), do.na = 'return-na' )
 #' todate( c( '12/3/14', 'Hello') )
+#' todate( c( "2018-10-20", "2018-10-20", "2018-10-20", "2018-10-20" ), verbose = FALSE )
+
 todate = function( 
   x,
   do.time = FALSE,
@@ -45,7 +48,7 @@ todate = function(
     convert.attempt = suppressWarnings( as.Date( lubridate::parse_date_time( x, try.formats ) ) )
     
     # If no new NAs were created, return the data.
-    if( ! any( is.na(convert.attempt) & ! is.na(x) ) ) return(x)
+    if( ! any( is.na(convert.attempt) & ! is.na(x) ) ) return( convert.attempt )
     
   # TODO: attempt excel date conversion.
     

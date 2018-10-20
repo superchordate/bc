@@ -30,6 +30,8 @@ Convert a vector to date. By default, returns vector unchanged if new NAs would 
 You can send non-dates in loops (or otherwise) and they won't be affected. Can be useful for checking if something is a date.
 }
 \examples{
+
 todate( c( '12/3/14', 'Hello'), do.na = 'return-na' )
 todate( c( '12/3/14', 'Hello') )
+todate( c( "2018-10-20", "2018-10-20", "2018-10-20", "2018-10-20" ), verbose = FALSE )
 }
