@@ -1,7 +1,20 @@
+#' Read Any
+#' 
+#' Flexible read function which also handles conversion to data types, and common data cleaning tasks.
+#'
+#' @param path Path to file within a folder, or full path.
+#' @param folder Folder to look for path in, if applicable.
+#' @param sheet If an excel file, the sheet to load.
+#'
+#' @return Tibble.
+#' 
+#' @export
+#'
+#' @examples
+#' # TODO
 read.any = function( 
   path,
   folder = NULL,
-  type = NULL,
   sheet = 1
   #na.strings = bc::na.strings,
   #skip.rows = 0
@@ -22,7 +35,7 @@ read.any = function(
     
     idt = NULL
   
-    if( is.null( type ) ) type = tolower( stringr::str_extract( path, '[^.]+$') )
+    type = tolower( stringr::str_extract( path, '[^.]+$') )
   
     # Excel
     
@@ -57,6 +70,7 @@ read.any = function(
       
       idt[[i]] = todate( idt[[i]], verbose = FALSE )
       idt[[i]] = tonum( idt[[i]], verbose = FALSE )
+      
     }
     
   # Return the data as a tibble.
