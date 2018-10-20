@@ -22,7 +22,7 @@ read.any = function(
     
     idt = NULL
   
-    if( is.null( type ) ) type = tolower( str_extract( path, '[^.]+$') )
+    if( is.null( type ) ) type = tolower( stringr::str_extract( path, '[^.]+$') )
   
     # Excel
     
@@ -61,6 +61,6 @@ read.any = function(
     
   # Return the data as a tibble.
     
-    return( dplyr::as_tibble( idt ) %>% ungroup() )
+    return( dplyr::ungroup( dplyr::as_tibble( idt ) ) )
   
 }
