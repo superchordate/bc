@@ -4,23 +4,27 @@
 \alias{todate}
 \title{Convert to Date.}
 \usage{
-todate(x, do.time = FALSE, do.excel = FALSE,
-  na.vals = bc::na.strings, already.clean.vector = FALSE,
-  verbose = TRUE, do.na = c("return-unchanged", "warning", "stop",
-  "return-na"))
+todate(x, do.time = FALSE, do.excel = TRUE, na.vals = bc::na.strings,
+  already.clean.vector = FALSE, verbose = TRUE,
+  do.na = c("return-unchanged", "warning", "stop", "return-na"),
+  min.acceptable.date = "1-1-1900", max.acceptable.date = "12-31-2100")
 }
 \arguments{
 \item{x}{Vector to convert.}
 
-\item{do.time}{NOT YET IMPLEMENTED Allow processing to time values.}
+\item{do.time}{Allow processing to time values.}
 
-\item{do.excel}{NOT YET IMPLEMENTED Allow conversion of excel date integers.}
+\item{do.excel}{Allow conversion of excel date integers.}
 
 \item{already.clean.vector}{Sometimes in multi-step data operations clean.vector will have already been called.}
 
 \item{verbose}{Print useful information via cat.}
 
 \item{do.na}{What to do in case new NAs are created during conversion. If all NAs, the vector will be returned unchanged. Otherwise, this argument determines behavior: return-unchnaged returns the vector unchanged. warning returns new NAs with a warning. stop throws an error. return-na prints a message with cat which can be turned off with verbose = FALSE.}
+
+\item{min.acceptable.date}{Set to NULL to ignore. Sometimes numbers are assumed to be excel-formatted. One way to prevent this is to set min/max acceptable dates to help the conversion know if something is a meaningful data or not.}
+
+\item{max.acceptable.date}{Set to NULL to ignore. Sometimes numbers are assumed to be excel-formatted. One way to prevent this is to set min/max acceptable dates to help the conversion know if something is a meaningful data or not.}
 }
 \value{
 Processed vector.
@@ -34,4 +38,6 @@ You can send non-dates in loops (or otherwise) and they won't be affected. Can b
 todate( c( '12/3/14', 'Hello'), do.na = 'return-na' )
 todate( c( '12/3/14', 'Hello') )
 todate( c( "2018-10-20", "2018-10-20", "2018-10-20", "2018-10-20" ), verbose = FALSE )
+todate( c( "6/12/2015 20:45:00", "4/4/2015 22:20:00" , "4/11/2016 23:24:00", "9/29/2016 1:10:00" ), do.time = TRUE )
+todate( 43393.5138888889, do.time = TRUE ) # this is 2018-10-20 12:20:00 in Excel.
 }

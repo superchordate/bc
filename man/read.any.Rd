@@ -4,7 +4,7 @@
 \alias{read.any}
 \title{Read Any}
 \usage{
-read.any(path, folder = NULL, sheet = 1)
+read.any(path, folder = NULL, sheet = 1, do.time = FALSE)
 }
 \arguments{
 \item{path}{Path to file within a folder, or full path.}
@@ -12,6 +12,8 @@ read.any(path, folder = NULL, sheet = 1)
 \item{folder}{Folder to look for path in, if applicable.}
 
 \item{sheet}{If an excel file, the sheet to load.}
+
+\item{do.time}{Allow processing to time values.}
 }
 \value{
 Tibble.

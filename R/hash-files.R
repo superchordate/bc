@@ -8,8 +8,7 @@
 #' @export
 #'
 #' @examples
-#' 
-#' hash.files( list( cars, iris ) )
+#' #TODO
 #' 
 hash.files = function( files ){
 
@@ -17,7 +16,7 @@ hash.files = function( files ){
     
     for( ifile in files ){
       
-      ifile.digest = digest::digest( ifile )
+      ifile.digest = digest::digest( file = ifile )
       ihash = openssl::md5( cc( ihash, ifile.digest ) )
       
     }

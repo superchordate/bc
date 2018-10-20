@@ -16,7 +16,6 @@ Hash string.
 Digest and hash a list of files. Useful for determining if files have changed during cache management.
 }
 \examples{
-
-hash.files( list( cars, iris ) )
+#TODO
 
 }
