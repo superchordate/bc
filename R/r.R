@@ -1,5 +1,6 @@
 r = function( 
-  file, type = NULL,
+  file, 
+  type = NULL,
   sheet = 1,
   na.strings = na.strings,
   skip.rows = 0

@@ -14,8 +14,8 @@ cc = function( ..., sep = '' ){
   
   arglist = list(...)
   
-  if( length( arglist[[1]] ) == 1 ){
-    x = paste0( ..., sep = sep )
+  if( length( arglist ) == 1 ){
+    x = paste0( ..., collapse = sep )
   } else{
     x = paste( ..., sep = sep )
   }

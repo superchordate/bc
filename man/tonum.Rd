@@ -4,17 +4,23 @@
 \alias{tonum}
 \title{Convert to number.}
 \usage{
-tonum(x, na.strings = bc::na.strings, na.zero = FALSE,
-  if.na = "return-unchanged", verbose = TRUE)
+tonum(x, already.clean.vector = FALSE, na.vals = bc::na.strings,
+  na.zero = FALSE, do.remove.chars = FALSE,
+  do.na = c("return-unchanged", "warning", "stop", "return-na"),
+  verbose = TRUE)
 }
 \arguments{
 \item{x}{Vector to be covnerted to numeric.}
 
-\item{na.strings}{Strings to consider NA.}
+\item{already.clean.vector}{Sometimes in multi-step data operations clean.vector will have already been called.#'}
+
+\item{na.vals}{Values to consider NA.}
 
 \item{na.zero}{Set NA values to 0.}
 
-\item{if.na}{What to do if new NA values are crated during the conversion.}
+\item{do.remove.chars}{Remove characters that aren't numeric or numeric-related to aggressively extract numbers from strings.}
+
+\item{do.na}{What to do if new NA values are crated during the conversion.}
 
 \item{verbose}{Print messages (via cat) about what the function is doing.}
 }
