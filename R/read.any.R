@@ -21,8 +21,8 @@ read.any = function(
   sheet = 1,
   do.time = FALSE,
   min.acceptable.date = '1-1-1900', 
-  max.acceptable.date = '12-31-2100'
-  #na.strings = bc::na.strings,
+  max.acceptable.date = '12-31-2100',
+  nastrings = bc::nastrings
   #skip.rows = 0
 ){
   
@@ -66,7 +66,7 @@ read.any = function(
   
   if( type %in% c( 'tsv', 'csv' ) ) idt = data.table::fread( 
     path,
-    na.strings = na.strings, stringsAsFactors = FALSE, verbose = FALSE,
+    na.strings = nastrings, stringsAsFactors = FALSE, verbose = FALSE,
     check.names = FALSE, blank.lines.skip = TRUE
   )
   

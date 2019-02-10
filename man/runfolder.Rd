@@ -4,12 +4,14 @@
 \alias{runfolder}
 \title{Run the files in a folder.}
 \usage{
-runfolder(path, recursive = TRUE)
+runfolder(path, recursive = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{path}{Path to your files.}
 
 \item{recursive}{Recursively runs child folders. See ?list.files.}
+
+\item{verbose}{Print informative messages via cat.}
 }
 \description{
 Helpful for looping through scripts.

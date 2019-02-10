@@ -19,7 +19,7 @@
 tonum = function( 
   x, 
   already.clean.vector = FALSE,
-  na.vals = bc::na.strings, 
+  na.vals = bc::nastrings, 
   na.zero = FALSE, 
   do.remove.chars = FALSE,
   do.na = c( 'return-unchanged', 'warning', 'stop', 'return-na' ),

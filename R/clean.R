@@ -22,7 +22,7 @@ clean = function( x, header.in.data = TRUE, header.on.row = NULL ){
   
   if( header.in.data ) x = x[ (header.in.data+1):nrow(x), ]
   
-  na.headers = which( is.na( iheaders ) | iheaders %in% bc::na.strings )
+  na.headers = which( is.na( iheaders ) | iheaders %in% bc::nastrings )
 
   iheaders[ na.headers ] = paste0( rep( 'NA', length(na.headers) ), 1:length(na.headers) )
   

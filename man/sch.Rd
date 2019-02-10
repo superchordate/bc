@@ -18,6 +18,9 @@ sch(x, search.for, search.col = NULL, do.regex = FALSE,
 
 \item{ignore.case}{Ignore case when searching.}
 }
+\value{
+Search results.
+}
 \description{
 Searches for a value and return rows/values that match.
 }

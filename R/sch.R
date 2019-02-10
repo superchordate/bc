@@ -8,7 +8,7 @@
 #' @param do.regex Use regular expression to search.
 #' @param ignore.case Ignore case when searching. 
 #'
-#' @return
+#' @return Search results.
 #' @export
 #'
 #' @examples

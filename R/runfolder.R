@@ -4,16 +4,17 @@
 #'
 #' @param path Path to your files.
 #' @param recursive Recursively runs child folders. See ?list.files.
+#' @param verbose Print informative messages via cat.
 #' 
 #' @export
 #'
 #' @examples
 #' # TODO
-runfolder = function( path, recursive = TRUE ){
+runfolder = function( path, recursive = TRUE, verbose = TRUE ){
   
   for( i in list.files( path, full.names = TRUE, pattern = '[.][Rr]$', recursive = recursive ) ){
     
-    cat( '\t running [', gsub( '^.*/', '', i ), ']. \n')
+    if( verbose ) cat( '\t running [', gsub( '^.*/', '', i ), ']. \n')
     
     tryCatch({
       eval.parent( source( i ) )
@@ -24,6 +25,7 @@ runfolder = function( path, recursive = TRUE ){
     )
     
     rm(i)
+
   }
   
 }

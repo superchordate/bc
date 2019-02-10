@@ -26,7 +26,7 @@ todate = function(
   x,
   do.time = FALSE,
   do.excel = TRUE,
-  na.vals = bc::na.strings,
+  na.vals = bc::nastrings,
   already.clean.vector = FALSE,
   verbose = TRUE,
   do.na = c( 'return-unchanged', 'warning', 'stop', 'return-na' ),

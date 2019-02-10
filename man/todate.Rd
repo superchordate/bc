@@ -4,7 +4,7 @@
 \alias{todate}
 \title{Convert to Date.}
 \usage{
-todate(x, do.time = FALSE, do.excel = TRUE, na.vals = bc::na.strings,
+todate(x, do.time = FALSE, do.excel = TRUE, na.vals = bc::nastrings,
   already.clean.vector = FALSE, verbose = TRUE,
   do.na = c("return-unchanged", "warning", "stop", "return-na"),
   min.acceptable.date = "1-1-1900", max.acceptable.date = "12-31-2100")

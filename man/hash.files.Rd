@@ -2,18 +2,20 @@
 % Please edit documentation in R/hash-files.R
 \name{hash.files}
 \alias{hash.files}
-\title{Hash Files and Objects}
+\title{Hash Files}
 \usage{
-hash.files(files)
+hash.files(paths, hash.info = TRUE)
 }
 \arguments{
-\item{files}{List of file locations, or a list of objects to hash.}
+\item{paths}{List of file or folder locations.}
+
+\item{hash.info}{Hash the file info ( FALSE hashes the contents ). This is faster but slightly less reliable.}
 }
 \value{
 Hash string.
 }
 \description{
-Digest and hash a list of files. Useful for determining if files have changed during cache management.
+Create hash from a file or list of files. Useful for determining if files have changed during cache management.
 }
 \examples{
 #TODO

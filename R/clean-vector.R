@@ -13,7 +13,7 @@
 #' clean.vector( c( 'NA', 'Not NA') )
 clean.vector = function( 
   x, 
-  na.vals = bc::na.strings, 
+  na.vals = bc::nastrings, 
   verbose = TRUE 
 ){
   

@@ -5,7 +5,8 @@
 \title{Read Any}
 \usage{
 read.any(path, folder = NULL, sheet = 1, do.time = FALSE,
-  min.acceptable.date = "1-1-1900", max.acceptable.date = "12-31-2100")
+  min.acceptable.date = "1-1-1900", max.acceptable.date = "12-31-2100",
+  nastrings = bc::nastrings)
 }
 \arguments{
 \item{path}{Path to file within a folder, or full path.}

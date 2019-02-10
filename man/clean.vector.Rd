@@ -4,7 +4,7 @@
 \alias{clean.vector}
 \title{Clean a Vector}
 \usage{
-clean.vector(x, na.vals = bc::na.strings, verbose = TRUE)
+clean.vector(x, na.vals = bc::nastrings, verbose = TRUE)
 }
 \arguments{
 \item{x}{Vector to clean.}
