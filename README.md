@@ -1,5 +1,13 @@
 # bc
 
+```
+install.packages("devtools")
+devtools::install_github("superchordate/bc")
+require(bc)
+```
+
+# Documentation
+
 My R package. Includes functions below. Use ?function to get more detailed documentation.
 
 * **api** Get data from APIs.
