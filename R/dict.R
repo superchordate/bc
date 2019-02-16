@@ -34,6 +34,7 @@ dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.dropleve
         col.dict = data.frame( 
             name = col, 
             class = gsub( 'POSIXct', 'datetime(POSIXct)', class( x[[col]] )[1] ),
+            rows = nrow(x),
             stringsAsFactors = FALSE
         )
 
@@ -55,9 +56,9 @@ dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.dropleve
         }
         
         navals = which( is.na( x[[col]] ) )
-
         col.dict$unique = ifelse( !any( duplicated( x[[col]] ) ), 'unique', NA )
         col.dict$na.ct = ifelse( length(navals) == 0, as.numeric(NA), length(navals) )
+        col.dict$na.pct = ifelse( length(navals) == 0, as.numeric(NA), round( length(navals) / nrow(x), 3 ) )
 
         if( is.factor( x[[col]] ) ){
           

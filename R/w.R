@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' w( cars, 'output/cars' )
-w = function( x, file, row.names = FALSE, na = "", ... ){
+w = function( x, file = 'out', row.names = FALSE, na = "", ... ){
     
     file = paste0( gsub( '[.]csv$', '', file ), '.csv' )
     

@@ -22,7 +22,7 @@ Outliers use 1.5 IQR method.
 pareto80 is a measure of categorical concentration. It is the minimum % of categories that represent 80% of the rows. 80/20 rule applies if this is 0.2 for example. If it is 0.1, then 10% of categories make up 80% of rows. If columns are evenly distributed then it will be 0.8.
 }
 \description{
-Data dictionary.
+Get information about the columns in a dataset.
 }
 \examples{
 

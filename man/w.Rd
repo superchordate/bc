@@ -4,7 +4,7 @@
 \alias{w}
 \title{Write CSV Shorthand}
 \usage{
-w(x, file, row.names = FALSE, na = "", ...)
+w(x, file = "out", row.names = FALSE, na = "", ...)
 }
 \arguments{
 \item{x}{Data to write.}
