@@ -1,6 +1,6 @@
 Package: bc
 Title: My personal R package with functions I plan to use often.
-Version: 1.2.5
+Version: 1.2.6
 Date: 2019-02-15
 Authors@R: person("Bryce", "Chamberlain", email = "bryce@superchordate.com", role = c("aut", "cre"))
 URL: https://github.com/superchordate/bc
