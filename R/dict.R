@@ -125,7 +125,7 @@ dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.dropleve
         }
 
         col.dict$na.ct = length(navals)
-        col.dict$na.pct = length(navals) / nrow(vals)
+        col.dict$na.pct = length(navals) / nrow(x)
         if( length(navals) > 0 ) col.dict$na.rows = list( navals )
         
         col.dict$sample = list( x[[col]][splrows] )
