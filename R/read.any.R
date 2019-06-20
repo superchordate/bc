@@ -53,7 +53,14 @@ read.any = function(
         openxlsx::read.xlsx( 
           path, sheet = sheet, detectDates = TRUE, check.names = FALSE, skipEmptyRows = TRUE
         ) 
-      }, error = function(e){ } 
+      }, error = function(e){
+        
+        # try excel as xmll.
+        tryCatch({
+          as_tibble( dplyr::bind_rows( XML::readHTMLTable( doc = path, header = FALSE ) ) )
+        }, error = function(e){})
+        
+      }
     )
     
     if( is.null(idt) ) stop( 'Error reading Excel file [', path, ']. Error E938 read.any' )

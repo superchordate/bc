@@ -2,7 +2,8 @@
 #'
 #' @param url The URL of the API. You can set this up hou you like but it usually starts with htt and ends with .com or similar.
 #' @param path The second part of the URL which varies by the service you are using.
-#' @param params Named list/vector of key value pairs representing the arguments.
+#' @param parms Named list/vector of key value pairs representing the arguments.
+#' @param stringsAsFactors Return strings as factors if the data is CSV.
 #' @param do.cache Save a cache of the output to be used instead of the API in case of an error, etc.
 #' @param cache.path Path to save a cache to. Leave this blank and just use cache name if you wnat.
 #' @param cache.name File name to use for the cache. Cache will always be a .RDS so you don't need to include the path.
@@ -17,7 +18,8 @@
 api = function(
   url, path = NULL, parms = NULL,
   do.cache = TRUE, cache.path = NULL, cache.name = 'api-cache', use.cache.same.day = TRUE,
-  verbose = TRUE
+  verbose = TRUE,
+  stringsAsFactors = TRUE
 ){
 
   # Same-day cache.
@@ -39,7 +41,7 @@ api = function(
 
   # Build our call URL.
 
-    url = paste( url, path, sep = '/' )
+    if( !is.null(path) ) url = paste( url, path, sep = '/' )
 
     if( !is.null( parms ) ){
 
@@ -88,20 +90,38 @@ tryApi = function( url, verbose ){
   if( verbose ) cat( 'Final URL is: ', url, '\n' )
 
   raw.response = rawToChar( httr::GET( url )$content )
-
+  
+  # try json.
   tryCatch({
     idt = jsonlite::fromJSON( raw.response )
   }, error = function(e){})
+  
+  # try csv.
+  tryCatch({
+    idt = data.table::fread( text = raw.response, stringsAsFactors = TRUE )
+  }, error = function(e){})
 
   if( !exists('idt' ) ){
-    stop( 'bc::api - Response could not be parsed. Response was: \n', dplyr::str_trunc( raw.response, width = 500 ) )
+    stop( 'bc::api - Response could not be parsed. Response was: \n', stringr::str_trunc( raw.response, width = 500 ) )
   }
   
   # Check common errors.
+  err = NULL
   if( !is.null( idt[['error']] ) ){
-    if( !is.null( idt[['error']][['message']] ) ) stop( 'API Error message: ', idt[['error']][['message']]  )
-    stop( 'API error: \n', idt[['error']] )
+    
+    if( !is.null(names(idt[['error']])) && !is.null( idt[['error']][['message']] ) ){
+      
+      err = cc( 'API Error message: ', as.character( idt[['error']][['message']]  ) )
+      
+    } else {
+      
+      err = cc( 'API error: \n', as.character( idt[['error']] ) )
+      
+    }
+    
   }
+  
+  if( !is.null(err) ) stop( as.character(err) )
   
   return( idt )
 

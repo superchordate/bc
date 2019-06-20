@@ -6,6 +6,7 @@
 #' @param nastrings Strings to consider NA. Uses this package's defaults.
 #' @param run.on.sample Optionally, sample data to make this run faster. Enter the % of rows to sample.
 #' @param do.droplevels Unused factorlevels can cause problems with this. Choose to re-leveling all factors. This is slower but may resolve errors.
+#' @param return.lists Outliers and NAs can optionally be returned as lists to easily pull them out from data later. This slows things down though, so is not the default.
 #'
 #' @return Data frame with information for each column. 
 #' Outliers use 1.5 IQR method. 
@@ -17,10 +18,10 @@
 #' 
 #' dict(cars)
 #' 
-dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.droplevels = FALSE ){
+dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.droplevels = FALSE, return.lists = FALSE ){
 
     dict = data.frame( 
-      name = as.character( glue::glue( '{nrow(x)} obs. of {ncol(x)} variables' ) ),
+      name = character(),
       stringsAsFactors = FALSE
     )
 
@@ -103,7 +104,7 @@ dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.dropleve
               outlier.rows = vals$bc.row[ which( vals[[col]] > col.dict$pct75 + iqr  ) ]
               col.dict$outlier.ct = length(outlier.rows)
               col.dict$outlier.pct = col.dict$outlier.ct / nrow(vals)
-              if( length(outlier.rows) > 0 ) col.dict$outlier.rows = list(outlier.rows)
+              if( length(outlier.rows) > 0 ) col.dict$outlier.rows = if( return.lists ){ list(outlier.rows) } else { cc( head( outlier.rows, 5), sep = ', ' ) }
 
               rm(outlier.rows)
 
@@ -126,10 +127,11 @@ dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.dropleve
 
         col.dict$na.ct = length(navals)
         col.dict$na.pct = length(navals) / nrow(x)
-        if( length(navals) > 0 ) col.dict$na.rows = list( navals )
+        if( length(navals) > 0 ) col.dict$na.rows = if( return.lists){ list( navals ) } else { cc( head( navals, 5 ), sep = ', ' ) }
         
-        col.dict$sample = list( x[[col]][splrows] )
-
+        col.dict$sample = list( as.character(x[[col]])[splrows] )
+        if( ! return.lists ) col.dict$sample = cc( unlist( col.dict$sample ), sep = ', ' )
+              
         for( i in colnames(col.dict) ) if( is.numeric( col.dict[[i]] ) ) col.dict[[i]] = signif( col.dict[[i]], 3 )
         rm(i)
 
@@ -141,6 +143,8 @@ dict = function( x, nastrings = bc::nastrings, run.on.sample = NULL, do.dropleve
         rm( col.dict, col, navals  )
 
     }
+
+    for( i in colnames(dict) ) dict[[i]] = tonum( dict[[i]], do.na = 'return-unchanged', verbose = FALSE )
     
     return(dict)
 

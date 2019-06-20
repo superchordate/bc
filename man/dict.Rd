@@ -5,7 +5,7 @@
 \title{Data dictionary.}
 \usage{
 dict(x, nastrings = bc::nastrings, run.on.sample = NULL,
-  do.droplevels = FALSE)
+  do.droplevels = FALSE, return.lists = FALSE)
 }
 \arguments{
 \item{x}{Data frame to summarize.}
@@ -15,6 +15,8 @@ dict(x, nastrings = bc::nastrings, run.on.sample = NULL,
 \item{run.on.sample}{Optionally, sample data to make this run faster. Enter the % of rows to sample.}
 
 \item{do.droplevels}{Unused factorlevels can cause problems with this. Choose to re-leveling all factors. This is slower but may resolve errors.}
+
+\item{return.lists}{Outliers and NAs can optionally be returned as lists to easily pull them out from data later. This slows things down though, so is not the default.}
 }
 \value{
 Data frame with information for each column. 
